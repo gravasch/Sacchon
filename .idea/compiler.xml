@@ -6,14 +6,17 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="BasicSpring" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="BasicSpring" target="11" />
       <module name="RestApiProject" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="BasicSpring" options="-parameters" />
       <module name="RestApiProject" options="-parameters" />
     </option>
   </component>

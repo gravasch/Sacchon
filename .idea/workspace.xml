@@ -4,14 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3847ef3c-1da4-4069-bd46-cc9539e964bb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/BackEnd/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Sacchon.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+    <list default="true" id="3847ef3c-1da4-4069-bd46-cc9539e964bb" name="Changes" comment="Maven Configuration#2">
+      <change afterPath="$PROJECT_DIR$/BackEnd/BasicSpring.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +45,7 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "spring.configuration.checksum": "44eb616d2fd9024456b685a64d060bb1",
+    "spring.configuration.checksum": "b2fdc973223cad68706c1ef3710d8e8a",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -69,10 +66,32 @@
       <workItem from="1675708786288" duration="209000" />
       <workItem from="1675710195886" duration="677000" />
       <workItem from="1675710889135" duration="64000" />
+      <workItem from="1675711043810" duration="505000" />
+      <workItem from="1676024574780" duration="797000" />
     </task>
+    <task id="LOCAL-00001" summary="Maven Configuration">
+      <created>1675711137340</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1675711137340</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Maven Configuration#2">
+      <created>1675711166505</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1675711166505</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Maven Configuration" />
+    <MESSAGE value="Maven Configuration#2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Maven Configuration#2" />
   </component>
 </project>
