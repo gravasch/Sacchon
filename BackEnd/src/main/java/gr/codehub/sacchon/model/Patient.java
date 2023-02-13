@@ -6,25 +6,31 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
 
-import java.util.Date;
 
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
+@Data
 public class Patient {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private long patientId;
-    private String firstname;
+    private String firstName;
     private String lastName;
-    private String address;
-    private String city;
-    private Date date;
-    private String diabetesTypes;
-    private boolean isActive;
+
+    public Patient(long patientId, String firstName, String lastName) {
+    }
+
+    public Patient() {
+
+    }
+
+
+//    private String address;
+//    private String city;
+//    private Date date;
+//    private String diabetesTypes;
+//    private boolean isActive;
 
 
 }
