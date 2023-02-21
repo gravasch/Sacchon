@@ -16,7 +16,6 @@ public class ReporterImpl implements ReporterService{
     private final PatientRepository patientRepository;
     private final DoctorRepository doctorRepository;
 
-
     @Override
     public List<PatientDTO> readAllPatient() {
         return patientRepository
