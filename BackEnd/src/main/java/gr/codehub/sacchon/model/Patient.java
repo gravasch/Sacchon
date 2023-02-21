@@ -28,13 +28,12 @@ public class Patient {
     private String diabetesType;
     private Boolean isActive;
 
-//    @ManyToOne
-//    @JoinColumn(name= "doctor_id")
-//    private Doctor doctor;
-////    @OneToMany(mappedBy = "patient")
-////    private List<MediDataVaultService> mediDatas = new ArrayList<>();
-//    @OneToMany(mappedBy = "patient")
-//    private List<Consultation> consultations = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name= "doctor_id")
+    private Doctor doctor;
+
+    @OneToMany(mappedBy = "patient")
+    private List<Consultation> consultations = new ArrayList<>();
 
 //    private boolean hasConsultant;
 //    private boolean consultationPending;      *under discussion*

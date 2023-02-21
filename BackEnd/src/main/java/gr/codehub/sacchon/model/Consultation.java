@@ -22,23 +22,12 @@ public class Consultation {
     private String advice;
     private LocalDate consultationDate;
 
-//    @ManyToOne
-//    @JoinColumn(name= "doctor_id")
-//    private Doctor doctor;
-//
-//    @ManyToOne
-//    @JoinColumn(name= "patient_id")
-//    private Patient patient;
+    @ManyToOne
+    @JoinColumn(name= "doctor_id")
+    private Doctor doctor;
 
+    @ManyToOne
+    @JoinColumn(name= "patient_id")
+    private Patient patient;
 
-
-//    @ManyToOne
-//    @JoinColumn(name= "doctor_id")
-//    private Doctor doctor;
-//    @ManyToOne
-//    @JoinColumn(name= "patient_id")
-//    private Patient patient;
-//
-//    @OneToMany(mappedBy = "consultation")
-//    private List<MediData> mediData = new ArrayList<>();
 }

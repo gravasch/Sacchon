@@ -24,11 +24,11 @@ public class Doctor {
     private String username;
     private LocalDate dateOfBirth;
     private Boolean isActive = false;
-//
-//    @OneToMany(mappedBy = "doctor")
-//    private List<Patient> patients = new ArrayList<>();
-//
-//
-//    @OneToMany(mappedBy = "doctor")
-//    private List<Consultation> consultations = new ArrayList<>();
+
+    @OneToMany(mappedBy = "doctor")
+    private List<Patient> patients = new ArrayList<>();
+
+
+    @OneToMany(mappedBy = "doctor")
+    private List<Consultation> consultations = new ArrayList<>();
 }
