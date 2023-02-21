@@ -12,6 +12,4 @@ public interface ReporterService {
     List<DoctorDTO> readAllDoctor();
 
 
-
-
 }
