@@ -80,6 +80,7 @@ public class DoctorAdviceImpl implements DoctorAdviceService {
             dbDoctor.setLastName(doctor.getLastName());
             dbDoctor.setUsername(doctor.getUsername());
             dbDoctor.setDateOfBirth(doctor.getDateOfBirth());
+            dbDoctor.setDoctorType(doctor.getDoctorType());
             dbDoctor.setIsActive(doctor.getIsActive());
             doctorRepository.save(dbDoctor);
             action = true;

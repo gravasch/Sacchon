@@ -23,6 +23,7 @@ public class Doctor {
     private String lastName;
     private String username;
     private LocalDate dateOfBirth;
+    private DoctorType doctorType;
     private Boolean isActive = false;
 
     @OneToMany(mappedBy = "doctor")
