@@ -1,15 +1,16 @@
 package gr.codehub.sacchon.service;
+import gr.codehub.sacchon.Dto.CarbMeasurementsDTO;
 import gr.codehub.sacchon.Dto.GlucoseLevelDto;
 import gr.codehub.sacchon.Dto.PatientDTO;
-import gr.codehub.sacchon.exceptions.MediDataVaultException;
+import gr.codehub.sacchon.model.CarbMeasurements;
 import gr.codehub.sacchon.model.GlucoseLevel;
 import gr.codehub.sacchon.model.Patient;
+import gr.codehub.sacchon.repository.CarbRepository;
 import gr.codehub.sacchon.repository.GlucoseRepository;
 import gr.codehub.sacchon.repository.PatientRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -19,14 +20,19 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class MediDataVaultImpl implements MediDataVaultService {
 
+
+
+//    @Autowired needed?
     private final PatientRepository patientRepository;
     private  final GlucoseRepository glucoseRepository;
-
+    private final CarbRepository carbRepository;
 
     @Override
     public String ping() {
         return "This is patient's endpoints";
     }
+
+
     //Account settings
     @Override
     public PatientDTO createPatient(PatientDTO patientDto) {
@@ -142,55 +148,74 @@ public class MediDataVaultImpl implements MediDataVaultService {
         return  action;
     }
 
+    //auto generated
+    @Override
+    public CarbMeasurementsDTO createCarbMeasurement(CarbMeasurementsDTO carbMeasurementsDTO) {
+        return null;
+    }
+
+    @Override
+    public List<CarbMeasurementsDTO> readCarbMeasurements() {
+        return null;
+    }
+
     //CarbMeasurements
 
+    @Override
+    public CarbMeasurementsDTO create(CarbMeasurementsDTO carbMeasurementsDto) {
+        CarbMeasurements carbMeasurements = carbMeasurementsDto.asCarbMeasurements();
+        return new CarbMeasurementsDTO(carbRepository.save(carbMeasurements));
+    }
 
-//
-//    @Override
-//    public CarbMeasurements addCarbMeasure(CarbMeasurementsDTO dciMeasurementDTO, Long patientId) {
-//        return null;
-//    }
-//
-//    //Updates Measurements
-//    @Override
-//    public GlucoseLevel updateBloodMeasure(BloodGlucoseMeasurementDTO BloodMeasureDTO, Long patientId) {
-//        return null;
-//    }
-//
-//    @Override
-//    public CarbMeasurements updateCarbMeasure(CarbMeasurementsDTO dciMeasurementDTO, Long patientId) {
-//        return null;
-//    }
-//
-//
-//    //Delete Measurements
-//    @Override
-//    public boolean deleteBloodMeasure(Long bloodMeasureId) {
-//        return false;
-//    }
-//
-//    @Override
-//    public boolean deleteCarbMeasure(Long carbMeasureId) {
-//        return false;
-//    }
-//
-//    @Override
-//    public List<Patient> getAllPatients() {
-//        return null;
-//    }
+    @Override
+    public List<CarbMeasurementsDTO> readAllCarbs() {
+        return carbRepository.findAll()
+                .stream()
+                .map(CarbMeasurementsDTO::new)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public CarbMeasurementsDTO readCarbsDb(long id) throws Exception {
+        Optional<CarbMeasurements> carbMeasurements = carbRepository.findById(id);
+        if (carbMeasurements.isPresent())
+            throw new Exception("CarbMeasurement with id " + id + " not found");
+        return new CarbMeasurementsDTO(carbMeasurements.get());
+    }
+
+    @Override
+    public CarbMeasurementsDTO readCarbs(Long id) throws Exception {
+        return new CarbMeasurementsDTO(readCarbsDb(id).asCarbMeasurements());
+
+    }
+
+    @Override
+    public CarbMeasurementsDTO update(CarbMeasurementsDTO carbMeasurementsDTO, long id) throws Exception {
+        Optional<CarbMeasurements> optionalCarbMeasurements = carbRepository.findById(id);
+        if (optionalCarbMeasurements.isPresent())
+            throw new Exception("CarbMeasurement with id " + id + " not found");
+        CarbMeasurements carbMeasurements = optionalCarbMeasurements.get();
+        carbMeasurements.setDate(carbMeasurementsDTO.getDate());
+        carbMeasurements.setGram(carbMeasurementsDTO.getGram());
+        return new CarbMeasurementsDTO(carbRepository.save(carbMeasurements));
+    }
+
+    @Override
+    public boolean deleteCarb(long id) throws Exception {
+        Optional<CarbMeasurements> optionalCarbMeasurements = carbRepository.findById(id);
+        if (optionalCarbMeasurements.isPresent())
+            throw new Exception("CarbMeasurement with id " + id + " not found");
+        carbRepository.deleteById(id);
+        return true;
+    }
 
 
 
-//    //Average Measurements
-//    @Override
-//    public Double avgBloodGlucoseMeasure(LocalDate begin, LocalDate end, Long patientId) {
-//        return null;
-//    }
-//
-//    @Override
-//    public Double avgCarbMeasure(LocalDate begin, LocalDate end, Long patientId) {
-//        return null;
-//    }
+
+
+
+
+
 
 
 
