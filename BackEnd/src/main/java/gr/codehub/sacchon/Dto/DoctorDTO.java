@@ -9,7 +9,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Data
 public class DoctorDTO {
-    private Long id;
+    private Long doctor_id;
     private String firstName;
     private String lastName;
     private String username;
@@ -20,7 +20,7 @@ public class DoctorDTO {
 
         public DoctorDTO(Doctor doctor){
             if (doctor!= null){
-                id = doctor.getId();
+                doctor_id= doctor.getDoctor_id();
                 firstName = doctor.getFirstName();
                 lastName = doctor.getLastName();
                 username = doctor.getUsername();
@@ -31,7 +31,7 @@ public class DoctorDTO {
         }
         public Doctor asDoctor(){
             Doctor doctor = new Doctor();
-            doctor.setId(id);
+            doctor.setDoctor_id(doctor_id);
             doctor.setFirstName(firstName);
             doctor.setLastName(lastName);
             doctor.setUsername(username);

@@ -16,7 +16,7 @@ import java.util.List;
 public class  Doctor {
     @jakarta.persistence.Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long id;
+    private Long doctor_id;
 
     private String firstName;
     private String lastName;

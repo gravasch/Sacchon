@@ -18,7 +18,7 @@ public class Reporter {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long reporter_id;
 
     private LocalDate date;
 

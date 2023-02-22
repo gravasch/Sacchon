@@ -14,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 public class PatientDTO {
-    private Long id;
+    private Long patient_id;
     private String firstName;
     private String lastName;
     private String address;
@@ -25,7 +25,7 @@ public class PatientDTO {
 
     public PatientDTO(Patient patient) {
         if (patient!= null){
-            id = patient.getId();
+            patient_id= patient.getPatient_id();
             firstName = patient.getFirstName();
             lastName = patient.getLastName();
             diabetesType = patient.getDiabetesType();
@@ -38,7 +38,7 @@ public class PatientDTO {
 
     public Patient asPatient() {
         Patient patient = new Patient();
-        patient.setId(id);
+        patient.setPatient_id(patient_id);
         patient.setFirstName(firstName);
         patient.setLastName(lastName);
         patient.setAddress(address);
