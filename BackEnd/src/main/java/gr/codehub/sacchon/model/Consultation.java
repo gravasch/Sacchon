@@ -5,7 +5,7 @@ import lombok.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-
+import java.util.List;
 
 
 @Getter
@@ -16,18 +16,20 @@ import java.util.ArrayList;
 public class Consultation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long consultationId;
     private String medicationName;
     private double dosage;
     private String advice;
     private LocalDate consultationDate;
 
+//    @OneToMany(mappedBy = "consultation" , fetch = FetchType.LAZY)
+//    private List<ConsultationReporter> consultationReporters;
     @ManyToOne
-    @JoinColumn(name= "doctor_id")
+    @JoinColumn(name= "doctor")
     private Doctor doctor;
 
     @ManyToOne
-    @JoinColumn(name= "patient_id")
+    @JoinColumn(name= "patient")
     private Patient patient;
 
 }

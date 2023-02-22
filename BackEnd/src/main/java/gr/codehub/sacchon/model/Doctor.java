@@ -23,6 +23,7 @@ public class  Doctor {
     private String username;
     private LocalDate dateOfBirth;
     private Boolean isActive = false;
+    private DoctorType doctorType;
 
     @OneToMany(mappedBy = "doctor")
     private List<Patient> patients = new ArrayList<>();

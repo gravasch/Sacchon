@@ -1,12 +1,9 @@
 package gr.codehub.sacchon.model;
-
-import gr.codehub.sacchon.service.MediDataVaultService;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 
@@ -29,11 +26,13 @@ public class Patient {
     private Boolean isActive;
 
     @ManyToOne
-    @JoinColumn(name= "doctor_id")
+    @JoinColumn(name= "doctor")
     private Doctor doctor;
 
     @OneToMany(mappedBy = "patient")
     private List<Consultation> consultations = new ArrayList<>();
+
+
 
 //    private boolean hasConsultant;
 //    private boolean consultationPending;      *under discussion*

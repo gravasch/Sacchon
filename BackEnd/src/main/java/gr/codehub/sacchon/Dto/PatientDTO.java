@@ -23,6 +23,7 @@ public class PatientDTO {
     private String diabetesType;
     private Boolean isActive;
 
+    //Model to DTO
     public PatientDTO(Patient patient) {
         if (patient!= null){
             patient_id= patient.getPatient_id();
@@ -35,7 +36,7 @@ public class PatientDTO {
         }
     }
 
-
+    //DTO to Model
     public Patient asPatient() {
         Patient patient = new Patient();
         patient.setPatient_id(patient_id);

@@ -21,7 +21,7 @@ public class ConsultationDTO {
 
     public ConsultationDTO(Consultation consultation){
         if (consultation!= null){
-            id = consultation.getId();
+            id = consultation.getConsultationId();
             medicationName = consultation.getMedicationName();
             dosage = consultation.getDosage();
             advice = consultation.getAdvice();
@@ -30,7 +30,7 @@ public class ConsultationDTO {
     }
     public Consultation asConsultation(){
         Consultation consultation = new Consultation();
-        consultation.setId(id);
+        consultation.setConsultationId(id);
         consultation.setMedicationName(medicationName);
         consultation.setDosage(dosage);
         consultation.setAdvice(advice);

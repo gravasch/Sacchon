@@ -22,14 +22,14 @@ public class Reporter {
 
     private LocalDate date;
 
-    @ManyToOne
-    @JoinColumn(name = "patient_id")
-    private Patient patient;
-    @ManyToOne
-    @JoinColumn(name = "doctor_id")
-    private Doctor doctor;
+//    @ManyToOne
+//    @JoinColumn(name = "patient")
+//    private Patient patient;
+//    @ManyToOne
+//    @JoinColumn(name = "doctor")
+//    private Doctor doctor;
 
-    @OneToMany(mappedBy = "reporter")
+    @OneToMany(mappedBy = "reporter_id")
     private List<ConsultationReporter> consultationReporters;
 
 }

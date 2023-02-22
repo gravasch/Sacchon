@@ -21,7 +21,7 @@ public class PatientController {
 
     @GetMapping("Patient/ping")
     public String ping() {
-        log.info("The end point ping has been used");
+        log.info("The end point patient ping has been used");
         return mediDataVaultService.ping();
     }
 
