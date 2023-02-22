@@ -26,9 +26,9 @@ public interface MediDataVaultService {
     boolean deletePatient(Long id);
     String ping();
 
-    //Add measurements
+    //  Measurements
 
-    //GlucoseLevel
+    //Glucose Level
 
     GlucoseLevelDto createGlucose(GlucoseLevelDto glucoseLevel);
 
@@ -40,44 +40,22 @@ public interface MediDataVaultService {
 
     boolean deleteGlucose(Long id);
 
+    //Carb Measurements
+
+    CarbMeasurementsDTO createCarbMeasurement(CarbMeasurementsDTO carbMeasurementsDTO);
+
+    List<CarbMeasurementsDTO> readCarbMeasurements();
 
 
-//    CarbMeasurements addCarbMeasure(CarbMeasurementsDTO CarbMeasureDTO, Long patientId);
-//
-//
-//    Double avgBloodGlucoseMeasure(LocalDate begin, LocalDate end , Long patientId);
-//
-//    Double avgCarbMeasure(LocalDate begin, LocalDate end , Long patientId);
-//
-//    CarbMeasurements updateCarbMeasure(CarbMeasurementsDTO CarbMeasureDTO, Long patientId);
-//    boolean deleteCarbMeasure(Long patientId);
-//
-//
-//
-//
-////    Δεν ξερω αν τα χρειαζόμαστε αυτα
-//
-//
-//    List<Patient> getAllPatients();
-//
-//    Patient getPatientById(Long patientId);
-//
-//    Patient createPatient(Patient patient);
-//
-//
-//
-//    Patient updatePatient(Patient patient);
-//
-//    String ping();
-//
-//    Patient readPatient(int id);
-//
-//    List<Patient> readPatient();
-//
-//    boolean deletePatient(Long id);
-//
-//    boolean updatePatient(Patient patient, int id);
+    CarbMeasurementsDTO create(CarbMeasurementsDTO dto);
 
+    List<CarbMeasurementsDTO> readAllCarbs();
 
+    CarbMeasurementsDTO readCarbsDb(long id) throws Exception;
 
+    CarbMeasurementsDTO update(CarbMeasurementsDTO dto, long id) throws Exception;
+
+    boolean deleteCarb(long id) throws Exception;
+
+    CarbMeasurementsDTO readCarbs(Long id) throws Exception;
 }
