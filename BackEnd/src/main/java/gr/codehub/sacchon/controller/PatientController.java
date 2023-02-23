@@ -1,5 +1,6 @@
 package gr.codehub.sacchon.controller;
 
+import gr.codehub.sacchon.Dto.CarbMeasurementsDTO;
 import gr.codehub.sacchon.Dto.GlucoseLevelDto;
 import gr.codehub.sacchon.Dto.PatientDTO;
 import gr.codehub.sacchon.exceptions.MediDataVaultException;
@@ -7,6 +8,7 @@ import gr.codehub.sacchon.service.MediDataVaultService;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -81,6 +83,40 @@ public class PatientController {
         log.info("The end point PatientDto - delete glucose by patient id has been used");
         return mediDataVaultService.deleteGlucose(id);
     }
+
+    //Carb Measurements
+
+    // Stores carb measurements
+    @PostMapping("/Patient/carbs")
+public CarbMeasurementsDTO storeCarbMeasurement(@RequestBody CarbMeasurementsDTO carbMeasurementsDto) {
+        log.info("The endpoint to store carb measurements has been used");
+        return mediDataVaultService.create(carbMeasurementsDto);
+    }
+
+    // View carb measurements by patient's id
+    @GetMapping("/Patient/{id}/carbs/{id}")
+    public CarbMeasurementsDTO viewCarbMeasurements(@PathVariable(name = "id") Long id) throws Exception {
+        log.info("The endpoint to view carb measurements by patient id has been used");
+        return mediDataVaultService.readCarbs(id);
+    }
+
+    // Update carb measurements by patient's id
+    @PutMapping("/Patient/{id}/carbs/{id}")
+    public CarbMeasurementsDTO updateCarbMeasurement(@RequestBody CarbMeasurementsDTO carbMeasurementsDto,
+                                                     @PathVariable(name = "id") Long id) throws Exception {
+        log.info("The endpoint to update carb measurements by patient id has been used");
+        carbMeasurementsDto.setCarbId(id);
+        return mediDataVaultService.update(carbMeasurementsDto, id);
+    }
+
+    // Delete carb measurements by patient's id
+    @DeleteMapping("/Patient/{id}/carbs/{id}")
+    public void deleteCarbMeasurement(@PathVariable(name = "id") Long id) throws Exception {
+        log.info("The endpoint to delete carb measurements by patient id has been used");
+        mediDataVaultService.deleteCarb(id);
+    }
+
+
 
 
 }
