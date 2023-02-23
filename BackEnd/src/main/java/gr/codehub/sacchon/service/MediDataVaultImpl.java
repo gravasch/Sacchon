@@ -65,6 +65,7 @@ public class MediDataVaultImpl implements MediDataVaultService {
             dbPatient.setLastName(patient.getLastName());
             dbPatient.setIsActive(patient.getIsActive());
             dbPatient.setAddress(patient.getAddress());
+            dbPatient.setCity(patient.getCity());
             dbPatient.setDiabetesType(patient.getDiabetesType());
             patientRepository.save(dbPatient);
             action = true;
