@@ -1,5 +1,6 @@
 package gr.codehub.sacchon.Dto;
 
+import gr.codehub.sacchon.model.DiabetesType;
 import gr.codehub.sacchon.model.Doctor;
 import gr.codehub.sacchon.model.Patient;
 import lombok.AllArgsConstructor;
@@ -20,7 +21,7 @@ public class PatientDTO {
     private String address;
     private String city;
     private LocalDate birthDate;
-    private String diabetesType;
+    private DiabetesType diabetesType;
     private Boolean isActive;
 
     public PatientDTO(Patient patient) {

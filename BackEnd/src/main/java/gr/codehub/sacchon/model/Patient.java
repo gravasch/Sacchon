@@ -26,14 +26,14 @@ public class Patient {
     private String address;
     private String city;
     private LocalDate birthDate;
-    private String diabetesType;
+    private DiabetesType diabetesType;
     private Boolean isActive;
 
     @ManyToOne
     @JoinColumn(name= "doctor_id")
     private Doctor doctor;
 
-    @OneToMany(mappedBy = "patient")
+    @OneToMany(mappedBy = "patient", fetch = FetchType.LAZY)
     private List<Consultation> consultations = new ArrayList<>();
 
 //    private boolean hasConsultant;

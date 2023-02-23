@@ -1,10 +1,7 @@
 package gr.codehub.sacchon.Configuration;
 
 
-import gr.codehub.sacchon.model.Consultation;
-import gr.codehub.sacchon.model.Doctor;
-import gr.codehub.sacchon.model.DoctorType;
-import gr.codehub.sacchon.model.Patient;
+import gr.codehub.sacchon.model.*;
 import gr.codehub.sacchon.repository.ConsultationRepository;
 import gr.codehub.sacchon.repository.DoctorRepository;
 import gr.codehub.sacchon.repository.PatientRepository;
@@ -31,10 +28,10 @@ public class InitialConfiguration {
                 List<Doctor> list =  doctorRepository.saveAll(List.of(doctor1, doctor2));
 
                 Patient patient1 = new Patient(  1L,  "Malvina", "Zatka", "martiou 25", "thessaloniki" , LocalDate.now(),
-                        "A", true ,doctor1, null);
+                        DiabetesType.TYPE1, true ,doctor1, null);
 
                 Patient patient2 = new Patient(  2L,  "Evaggelia", "Milosi", "karamanli", "Drama", LocalDate.now(),
-                        "B", true ,doctor2, null);
+                        DiabetesType.GESTATIONAL, true ,doctor2, null);
 
                 List<Patient> list2 =  patientRepository.saveAll(List.of(patient1, patient2));
 

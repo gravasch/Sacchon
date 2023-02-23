@@ -2,6 +2,7 @@ package gr.codehub.sacchon.controller;
 
 import gr.codehub.sacchon.Dto.ConsultationDTO;
 import gr.codehub.sacchon.Dto.DoctorDTO;
+import gr.codehub.sacchon.model.Patient;
 import gr.codehub.sacchon.service.DoctorAdviceService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -41,17 +42,19 @@ public class DoctorController {
         return doctorService.deleteDoctor(id);
     }
 
-    @PostMapping("/Doctor/Consult")
+    @PostMapping("/Doctor/{doctorId}/Consult/{patientId}")
 
-    public ConsultationDTO createConsultation(@RequestBody ConsultationDTO consultationDTO) {
+    public ConsultationDTO createConsultation(@RequestBody ConsultationDTO consultationDTO,
+                                              @PathVariable (name = "doctorId") Long doctorId,
+                                              @PathVariable (name = "patientId") Long patientId) throws Exception{
         log.info("The end point consultation has been used");
-        return doctorService.createConsultation(consultationDTO);
+        return doctorService.createConsultation(consultationDTO,doctorId,patientId);
     }
 
-    @GetMapping("/Doctor/Consult/{id}")
-    public ConsultationDTO findConsultation(@PathVariable(name = "id") Long id) throws Exception {
+    @GetMapping("/Doctor/Consult/{patientId}")
+    public List<ConsultationDTO>findAllPatientConsultation(@PathVariable(name = "patientId") Long patientId) throws Exception {
         log.info("The end point ConsultationDto has been used");
-        return doctorService.readConsultation(id);
+        return doctorService.readAllPatientConsultation(patientId);
     }
 
     @PutMapping("/Doctor/Consult/{id}")
