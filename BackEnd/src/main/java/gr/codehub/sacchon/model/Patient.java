@@ -35,6 +35,12 @@ public class Patient {
 
     @OneToMany(mappedBy = "patient")
     private List<Consultation> consultations = new ArrayList<>();
+    @OneToMany(mappedBy = "patient")
+    private List<GlucoseLevel> glucoseLevels = new ArrayList<>();
+    @OneToMany(mappedBy = "patient")
+    private List<CarbMeasurements> carbMeasurements = new ArrayList<>();
+
+
 
 //    private boolean hasConsultant;
 //    private boolean consultationPending;      *under discussion*

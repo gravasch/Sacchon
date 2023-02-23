@@ -23,39 +23,44 @@ public class GlucoseLevel {
     private LocalDate glDate;
     private LocalTime glTime;
     private BigDecimal measurement;
+    @ManyToOne
+    Patient patient;
 
-
-
-
-    public Long getGlucId() {
-        return glucId;
-    }
-
-    public void setGlucId(Long glucId) {
-        this.glucId = glucId;
-    }
-
-    public LocalDate getGlDate() {
-        return glDate;
-    }
-
-    public void setGlDate(LocalDate glDate) {
-        this.glDate = glDate;
-    }
-
-    public LocalTime getGlTime() {
-        return glTime;
-    }
-
-    public void setGlTime(LocalTime glTime) {
-        this.glTime = glTime;
-    }
-
-    public BigDecimal getMeasurement() {
-        return measurement;
-    }
-
-    public void setMeasurement(BigDecimal measurement) {
-        this.measurement = measurement;
-    }
 }
+
+
+
+
+//~~~~~~~~~~~~~Αυτά δε νομίζω να χρειαζονται~~~~~~~~~~~~~~~~~
+//    public Long getGlucId() {
+//        return glucId;
+//    }
+//
+//    public void setGlucId(Long glucId) {
+//        this.glucId = glucId;
+//    }
+//
+//    public LocalDate getGlDate() {
+//        return glDate;
+//    }
+//
+//    public void setGlDate(LocalDate glDate) {
+//        this.glDate = glDate;
+//    }
+//
+//    public LocalTime getGlTime() {
+//        return glTime;
+//    }
+//
+//    public void setGlTime(LocalTime glTime) {
+//        this.glTime = glTime;
+//    }
+//
+//    public BigDecimal getMeasurement() {
+//        return measurement;
+//    }
+//
+//    public void setMeasurement(BigDecimal measurement) {
+//        this.measurement = measurement;
+//    }
+//}

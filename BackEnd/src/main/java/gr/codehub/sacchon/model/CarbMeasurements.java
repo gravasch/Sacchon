@@ -21,5 +21,7 @@ public class CarbMeasurements {
 
     private LocalDate date;
     private double gram;
+    @ManyToOne
+    Patient patient;
 
 }
