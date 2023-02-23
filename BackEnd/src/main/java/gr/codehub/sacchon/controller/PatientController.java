@@ -3,15 +3,12 @@ package gr.codehub.sacchon.controller;
 import gr.codehub.sacchon.Dto.CarbMeasurementsDTO;
 import gr.codehub.sacchon.Dto.GlucoseLevelDto;
 import gr.codehub.sacchon.Dto.PatientDTO;
-import gr.codehub.sacchon.exceptions.MediDataVaultException;
 import gr.codehub.sacchon.service.MediDataVaultService;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+
 
 @RestController
 @AllArgsConstructor
