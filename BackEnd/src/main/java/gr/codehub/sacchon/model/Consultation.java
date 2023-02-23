@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class Consultation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String medicationName;
     private double dosage;
     private String advice;

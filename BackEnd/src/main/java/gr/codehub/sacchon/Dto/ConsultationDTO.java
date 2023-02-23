@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @Data
 public class ConsultationDTO {
 
-    private long id;
+    private Long id;
     private String medicationName;
     private double dosage;
     private String advice;

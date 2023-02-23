@@ -1,6 +1,7 @@
 package gr.codehub.sacchon.Dto;
 
 import gr.codehub.sacchon.model.Doctor;
+import gr.codehub.sacchon.model.DoctorType;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -15,6 +16,8 @@ public class DoctorDTO {
     private String username;
     private LocalDate dateOfBirth;
 
+    private DoctorType doctorType;
+
     private Boolean isActive;
 
 
@@ -25,6 +28,7 @@ public class DoctorDTO {
                 lastName = doctor.getLastName();
                 username = doctor.getUsername();
                 dateOfBirth = doctor.getDateOfBirth();
+                doctorType = doctor.getDoctorType();
                 isActive = doctor.getIsActive();
 
             }
@@ -36,6 +40,7 @@ public class DoctorDTO {
             doctor.setLastName(lastName);
             doctor.setUsername(username);
             doctor.setDateOfBirth(dateOfBirth);
+            doctor.setDoctorType(doctorType);
             doctor.setIsActive(isActive);
             return doctor;
         }
