@@ -18,6 +18,7 @@ public class PatientDTO {
     private Long id;
     private String firstName;
     private String lastName;
+    private String username;
     private String address;
     private String city;
     private LocalDate birthDate;
@@ -29,6 +30,7 @@ public class PatientDTO {
             id = patient.getId();
             firstName = patient.getFirstName();
             lastName = patient.getLastName();
+            username = patient.getUsername();
             address= patient.getAddress();
             city = patient.getCity();
             diabetesType = patient.getDiabetesType();
@@ -44,6 +46,7 @@ public class PatientDTO {
         patient.setId(id);
         patient.setFirstName(firstName);
         patient.setLastName(lastName);
+        patient.setUsername(username);
         patient.setAddress(address);
         patient.setCity(city);
         patient.setDiabetesType(diabetesType);
