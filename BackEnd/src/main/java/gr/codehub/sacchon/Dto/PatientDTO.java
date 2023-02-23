@@ -29,6 +29,8 @@ public class PatientDTO {
             id = patient.getId();
             firstName = patient.getFirstName();
             lastName = patient.getLastName();
+            address= patient.getAddress();
+            city = patient.getCity();
             diabetesType = patient.getDiabetesType();
             birthDate = patient.getBirthDate();
             isActive = patient.getIsActive();
