@@ -16,7 +16,7 @@ import java.util.List;
 public class Consultation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long consultationId;
+    private Long consultationId;
     private String medicationName;
     private double dosage;
     private String advice;

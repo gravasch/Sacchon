@@ -11,5 +11,5 @@ import java.util.List;
 public interface ConsultationRepository extends JpaRepository<Consultation, Long> {
 
     @Query(value = "select c from Consultation c where c.consultationId = :consultationId")
-    List<Consultation> findAllConsultationbyId(long consultationId);
+    List<Consultation> findAllConsultationbyId(Long consultationId);
 }
