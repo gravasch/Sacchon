@@ -6,6 +6,7 @@ import gr.codehub.sacchon.Dto.PatientDTO;
 import gr.codehub.sacchon.service.MediDataVaultService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -91,14 +92,14 @@ public CarbMeasurementsDTO storeCarbMeasurement(@RequestBody CarbMeasurementsDTO
     }
 
     // View carb measurements by patient's id
-    @GetMapping("/Patient/{id}/carbs/{id}")
+    @GetMapping("/Patient/carbs/{id}")
     public CarbMeasurementsDTO viewCarbMeasurements(@PathVariable(name = "id") Long id) throws Exception {
         log.info("The endpoint to view carb measurements by patient id has been used");
         return mediDataVaultService.readCarbs(id);
     }
 
     // Update carb measurements by patient's id
-    @PutMapping("/Patient/{id}/carbs/{id}")
+    @PutMapping("/Patient/carbs/{id}")
     public CarbMeasurementsDTO updateCarbMeasurement(@RequestBody CarbMeasurementsDTO carbMeasurementsDto,
                                                      @PathVariable(name = "id") Long id) throws Exception {
         log.info("The endpoint to update carb measurements by patient id has been used");
@@ -107,7 +108,7 @@ public CarbMeasurementsDTO storeCarbMeasurement(@RequestBody CarbMeasurementsDTO
     }
 
     // Delete carb measurements by patient's id
-    @DeleteMapping("/Patient/{id}/carbs/{id}")
+    @DeleteMapping("/Patient/carbs/{id}")
     public void deleteCarbMeasurement(@PathVariable(name = "id") Long id) throws Exception {
         log.info("The endpoint to delete carb measurements by patient id has been used");
         mediDataVaultService.deleteCarb(id);
