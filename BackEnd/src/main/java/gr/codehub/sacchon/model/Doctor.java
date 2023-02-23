@@ -27,10 +27,10 @@ public class Doctor {
     private DoctorType doctorType;
     private Boolean isActive = false;
 
-    @OneToMany(mappedBy = "doctor")
+    @OneToMany(mappedBy = "doctor", fetch = FetchType.LAZY)
     private List<Patient> patients = new ArrayList<>();
 
 
-    @OneToMany(mappedBy = "doctor")
+    @OneToMany(mappedBy = "doctor", fetch = FetchType.LAZY)
     private List<Consultation> consultations = new ArrayList<>();
 }

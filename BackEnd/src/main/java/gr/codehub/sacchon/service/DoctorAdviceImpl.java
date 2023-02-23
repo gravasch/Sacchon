@@ -2,15 +2,20 @@ package gr.codehub.sacchon.service;
 
 import gr.codehub.sacchon.Dto.ConsultationDTO;
 import gr.codehub.sacchon.Dto.DoctorDTO;
+import gr.codehub.sacchon.Dto.PatientDTO;
 import gr.codehub.sacchon.model.Consultation;
 import gr.codehub.sacchon.model.Doctor;
+import gr.codehub.sacchon.model.Patient;
 import gr.codehub.sacchon.repository.ConsultationRepository;
 import gr.codehub.sacchon.repository.DoctorRepository;
+import gr.codehub.sacchon.repository.PatientRepository;
+import jakarta.persistence.EntityManager;
 import lombok.AllArgsConstructor;
 
 
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -18,8 +23,10 @@ import java.util.stream.Collectors;
 @Service
 @AllArgsConstructor
 public class DoctorAdviceImpl implements DoctorAdviceService {
+    private EntityManager entityManager;
 
     private final DoctorRepository doctorRepository;
+    private final PatientRepository patientRepository;
     private final ConsultationRepository consultationRepository;
 
     @Override
@@ -29,17 +36,30 @@ public class DoctorAdviceImpl implements DoctorAdviceService {
     }
 
     @Override
-    public ConsultationDTO createConsultation(ConsultationDTO consultationDTO) {
+    public ConsultationDTO createConsultation(ConsultationDTO consultationDTO, Long doctorId, Long patientId) throws Exception {
+
         Consultation consultation = consultationDTO.asConsultation();
+        Optional<Patient> patientOpt = patientRepository.findById(patientId);
+        Optional<Doctor> doctorOpt = doctorRepository.findById(doctorId);
+        if (patientOpt.isEmpty() || doctorOpt.isEmpty()){
+            throw new Exception("Patient or doctor not found");
+        }
+        Patient patient = patientOpt.get();
+        consultation.setPatient(patient);
+        Doctor doctor = doctorOpt.get();
+        consultation.setDoctor(doctor);
+
         return new ConsultationDTO(consultationRepository.save(consultation));
     }
 
-
+//ORDER BY ConsultationDate DESC
 
     @Override
-    public List<ConsultationDTO> readConsultation() {
+    public List<ConsultationDTO> readAllPatientConsultation(Long patientId) throws Exception{
+
+
         return consultationRepository
-                .findAll()
+                .findById(patientId)
                 .stream()
                 .map(ConsultationDTO::new)
                 .collect(Collectors.toList());
