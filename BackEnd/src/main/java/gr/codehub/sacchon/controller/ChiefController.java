@@ -24,14 +24,14 @@ public class ChiefController {
 
 
     //View Patient Account
-    @GetMapping("/Patient")
+    @GetMapping("/patient")
     public List<PatientDTO> getPatient() {
         log.info("The end point get patient has been used");
         return reporterService.readAllPatient();
     }
 
 
-    @GetMapping("/Doctor")
+    @GetMapping("/doctor")
     public List<DoctorDTO> findAllDoctor() {
         log.info("The end point DoctorDto has been used");
         return reporterService.readAllDoctor();

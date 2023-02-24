@@ -19,33 +19,33 @@ public class PatientController {
 
     private MediDataVaultService mediDataVaultService ;
 
-    @GetMapping("Patient/ping")
+    @GetMapping("patient/ping")
     public String ping() {
         log.info("The end point ping has been used");
         return mediDataVaultService.ping();
     }
 
     //View Patient Account by ID
-    @GetMapping("/Patient/{id}")
+    @GetMapping("/patient/{id}")
     public PatientDTO getPatient(@PathVariable(name = "id") Long id) throws Exception {
         log.info("The end point patient by id has been used");
         return mediDataVaultService.readPatient(id);
     }
     //Create patient
-    @PostMapping("/Patient")
+    @PostMapping("/patient")
     public PatientDTO createPatientDto(@RequestBody PatientDTO patientDTO) {
         log.info("The end point PatientDto - create patient has been used");
         return mediDataVaultService.createPatient(patientDTO);
     }
     //Update patient with ID
-    @PutMapping("/Patient/{id}")
+    @PutMapping("/patient/{id}")
     public boolean updatePatientDTO(@RequestBody PatientDTO patientDTO, @PathVariable(name = "id") Long id) {
         //log.info("The end point PatientDto - update patient has been used");
         return mediDataVaultService.updatePatient(patientDTO, id);
     }
 
     //Delete patient by ID
-    @DeleteMapping("/Patient/{id}")
+    @DeleteMapping("/patient/{id}")
     public boolean deletePatientDTO(@PathVariable(name = "id") Long id) {
         log.info("The end point PatientDto - delete patient has been used");
         return mediDataVaultService.deletePatient(id);
@@ -54,7 +54,7 @@ public class PatientController {
     //Glucose
 
     //Stores glucose level
-    @PostMapping("/Patient/glucose")
+    @PostMapping("/patient/glucose")
     public GlucoseLevelDto storeGlucose(@RequestBody GlucoseLevelDto glucoseLevelDto) {
         log.info("The end point save glucose level has been used");
         return mediDataVaultService.createGlucose(glucoseLevelDto);
@@ -62,21 +62,21 @@ public class PatientController {
 
 
     //View glucose level by patient's id
-    @GetMapping("/Patient/glucose/{id}")
+    @GetMapping("/patient/glucose/{id}")
     public GlucoseLevelDto viewGlucose(@PathVariable(name = "id") Long id) throws Exception {
         log.info("The end point GlucoseLevelDto - view by id has been used");
         return mediDataVaultService.readGlucose(id);
     }
 
     //Save glucose level by patient's id
-    @PutMapping("/Patient/glucose/{id}")
+    @PutMapping("/patient/glucose/{id}")
     public boolean updateGlucose(@RequestBody GlucoseLevelDto glucoseLevelDto,
                                  @PathVariable(name = "id") Long id) {
         log.info("The end point PatientDto - save glucose by patient id has been used");
         return mediDataVaultService.updateGlucose(glucoseLevelDto, id);
     }
     //Delete glucose level by patient's id
-    @DeleteMapping("/Patient/glucose/{id}")
+    @DeleteMapping("/patient/glucose/{id}")
     public boolean deleteGlucose(@PathVariable(name = "id") Long id) {
         log.info("The end point PatientDto - delete glucose by patient id has been used");
         return mediDataVaultService.deleteGlucose(id);
@@ -85,21 +85,21 @@ public class PatientController {
     //Carb Measurements
 
     // Stores carb measurements
-    @PostMapping("/Patient/carbs")
+    @PostMapping("/patient/carbs")
 public CarbMeasurementsDTO storeCarbMeasurement(@RequestBody CarbMeasurementsDTO carbMeasurementsDto) {
         log.info("The endpoint to store carb measurements has been used");
         return mediDataVaultService.create(carbMeasurementsDto);
     }
 
     // View carb measurements by patient's id
-    @GetMapping("/Patient/carbs/{id}")
+    @GetMapping("/patient/carbs/{id}")
     public CarbMeasurementsDTO viewCarbMeasurements(@PathVariable(name = "id") Long id) throws Exception {
         log.info("The endpoint to view carb measurements by patient id has been used");
         return mediDataVaultService.readCarbs(id);
     }
 
     // Update carb measurements by patient's id
-    @PutMapping("/Patient/carbs/{id}")
+    @PutMapping("/patient/carbs/{id}")
     public CarbMeasurementsDTO updateCarbMeasurement(@RequestBody CarbMeasurementsDTO carbMeasurementsDto,
                                                      @PathVariable(name = "id") Long id) throws Exception {
         log.info("The endpoint to update carb measurements by patient id has been used");
@@ -108,7 +108,7 @@ public CarbMeasurementsDTO storeCarbMeasurement(@RequestBody CarbMeasurementsDTO
     }
 
     // Delete carb measurements by patient's id
-    @DeleteMapping("/Patient/carbs/{id}")
+    @DeleteMapping("/patient/carbs/{id}")
     public void deleteCarbMeasurement(@PathVariable(name = "id") Long id) throws Exception {
         log.info("The endpoint to delete carb measurements by patient id has been used");
         mediDataVaultService.deleteCarb(id);
