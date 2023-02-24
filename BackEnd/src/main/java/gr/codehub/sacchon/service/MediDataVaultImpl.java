@@ -2,9 +2,7 @@ package gr.codehub.sacchon.service;
 import gr.codehub.sacchon.Dto.CarbMeasurementsDTO;
 import gr.codehub.sacchon.Dto.GlucoseLevelDto;
 import gr.codehub.sacchon.Dto.PatientDTO;
-import gr.codehub.sacchon.model.CarbMeasurements;
-import gr.codehub.sacchon.model.GlucoseLevel;
-import gr.codehub.sacchon.model.Patient;
+import gr.codehub.sacchon.model.*;
 import gr.codehub.sacchon.repository.CarbRepository;
 import gr.codehub.sacchon.repository.GlucoseRepository;
 import gr.codehub.sacchon.repository.PatientRepository;
@@ -195,25 +193,42 @@ public class MediDataVaultImpl implements MediDataVaultService {
 
     }
 
+    private CarbMeasurements readCarbMeasurementsDb(Long id) throws Exception {
+        Optional<CarbMeasurements> carbMeasurementsOptional = carbRepository.findById(id);
+        if (carbMeasurementsOptional.isPresent())
+            return   carbMeasurementsOptional.get() ;
+        throw new Exception("Consultation not found id= " + id);
+    }
+
+
 
     @Override
-    public CarbMeasurementsDTO updateCarb(CarbMeasurementsDTO carbMeasurementsDTO, Long id) throws Exception {
-        Optional<CarbMeasurements> optionalCarbMeasurements = carbRepository.findById(id);
-        if (optionalCarbMeasurements.isPresent())
-            throw new Exception("CarbMeasurement with id " + id + " not found");
-        CarbMeasurements carbMeasurements = optionalCarbMeasurements.get();
-        carbMeasurements.setDate(carbMeasurementsDTO.getDate());
-        carbMeasurements.setGram(carbMeasurementsDTO.getGram());
-        return new CarbMeasurementsDTO(carbRepository.save(carbMeasurements));
+    public boolean updateCarb(CarbMeasurementsDTO carbMeasurementsDTO, Long id) {
+        boolean action;
+        try {
+            CarbMeasurements dbCarbMeasurements = readCarbMeasurementsDb(id);
+            dbCarbMeasurements.setDate(carbMeasurementsDTO.getDate());
+            dbCarbMeasurements.setGram(carbMeasurementsDTO.getGram());
+            carbRepository.save(dbCarbMeasurements);
+            action = true;
+        } catch (Exception e) {
+            action = false;
+        }
+        return action;
     }
 
     @Override
-    public boolean deleteCarb(long id) throws Exception {
-        Optional<CarbMeasurements> optionalCarbMeasurements = carbRepository.findById(id);
-        if (optionalCarbMeasurements.isPresent())
-            throw new Exception("CarbMeasurement with id " + id + " not found");
-        carbRepository.deleteById(id);
-        return true;
+    public boolean deleteCarb(Long id)  {
+        boolean action;
+        try {
+            CarbMeasurements dbCarbMeasurements = readCarbMeasurementsDb(id);
+            carbRepository.delete(dbCarbMeasurements);
+            action = true;
+        } catch (Exception e) {
+            action = false;
+        }
+        return action;
+
     }
 
 

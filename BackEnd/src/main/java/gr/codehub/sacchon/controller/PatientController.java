@@ -101,18 +101,17 @@ public class PatientController {
 
     // Update carb measurements by patient's id
     @PutMapping("/patient/carbs/{id}")
-    public CarbMeasurementsDTO updateCarbMeasurement(@RequestBody CarbMeasurementsDTO carbMeasurementsDto,
-                                                     @PathVariable(name = "id") Long id) throws Exception {
+    public boolean updateCarbMeasurement(@RequestBody CarbMeasurementsDTO carbMeasurementsDto,
+                                                     @PathVariable(name = "id") Long id)  {
         log.info("The endpoint to update carb measurements by patient id has been used");
-        carbMeasurementsDto.setCarbId(id);
         return mediDataVaultService.updateCarb(carbMeasurementsDto, id);
     }
 
     // Delete carb measurements by patient's id
     @DeleteMapping("/patient/carbs/{id}")
-    public void deleteCarbMeasurement(@PathVariable(name = "id") Long id) throws Exception {
+    public boolean deleteCarbMeasurement(@PathVariable(name = "id") Long id)  {
         log.info("The endpoint to delete carb measurements by patient id has been used");
-        mediDataVaultService.deleteCarb(id);
+       return mediDataVaultService.deleteCarb(id);
     }
 
 
