@@ -1,10 +1,7 @@
 package gr.codehub.sacchon.controller;
 
 import gr.codehub.sacchon.Dto.DoctorDTO;
-import gr.codehub.sacchon.Dto.GlucoseLevelDto;
 import gr.codehub.sacchon.Dto.PatientDTO;
-import gr.codehub.sacchon.service.DoctorAdviceService;
-import gr.codehub.sacchon.service.MediDataVaultService;
 import gr.codehub.sacchon.service.ReporterService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,7 +16,7 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @Slf4j
-public class ChiefController {
+public class ReporterController {
     private ReporterService reporterService;
 
 

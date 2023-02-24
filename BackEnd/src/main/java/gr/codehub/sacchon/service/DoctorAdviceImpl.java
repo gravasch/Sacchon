@@ -65,6 +65,14 @@ public class DoctorAdviceImpl implements DoctorAdviceService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public List<ConsultationDTO> findPatientConsultation(Long patientId) {
+        return consultationRepository
+                .findPatientConsultation(patientId)
+                .stream()
+                .map(c -> new ConsultationDTO(c))
+                .collect(Collectors.toList());
+    }
 
 
     @Override

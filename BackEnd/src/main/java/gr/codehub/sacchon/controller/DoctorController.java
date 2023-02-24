@@ -57,6 +57,12 @@ public class DoctorController {
         return doctorService.readAllPatientConsultation(patientId);
     }
 
+    @GetMapping("/doctor/consultation/{patientId}")
+    public List<ConsultationDTO>findPatientConsultation(@PathVariable(name = "patientId") Long patientId) throws Exception {
+        log.info("The end point ConsultationDto has been used");
+        return doctorService.findPatientConsultation(patientId);
+    }
+
     @PutMapping("/doctor/consult/{id}")
     public boolean updateConsultation(@RequestBody ConsultationDTO consultationDTO,
                                    @PathVariable(name = "id") Long id) {
