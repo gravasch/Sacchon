@@ -41,6 +41,7 @@ public class MediDataVaultImpl implements MediDataVaultService {
     }
 
 
+
     @Override
     public PatientDTO readPatient(Long id) throws Exception {
         return new PatientDTO(readPatientDb(id));
@@ -94,8 +95,14 @@ public class MediDataVaultImpl implements MediDataVaultService {
 //
 //    //GlucoseLevel
     @Override
-    public GlucoseLevelDto createGlucose(GlucoseLevelDto glucoseLevelDto) {
+    public GlucoseLevelDto createGlucose(GlucoseLevelDto glucoseLevelDto, Long patientId) throws Exception {
         GlucoseLevel glucoseLevel = glucoseLevelDto.asGlucoseLevel();
+        Optional<Patient> patientOptional = patientRepository.findById(patientId);
+        if (patientOptional.isEmpty() ){
+            throw new Exception("PatientId is not found.");
+        }
+        Patient patient = patientOptional.get();
+        glucoseLevel.setPatient(patient);
         return new GlucoseLevelDto(glucoseRepository.save(glucoseLevel));
     }
 
@@ -150,22 +157,19 @@ public class MediDataVaultImpl implements MediDataVaultService {
         return  action;
     }
 
-    //auto generated
-    @Override
-    public CarbMeasurementsDTO createCarbMeasurement(CarbMeasurementsDTO carbMeasurementsDTO) {
-        return null;
-    }
 
-    @Override
-    public List<CarbMeasurementsDTO> readCarbMeasurements() {
-        return null;
-    }
 
     //CarbMeasurements
 
     @Override
-    public CarbMeasurementsDTO create(CarbMeasurementsDTO carbMeasurementsDto) {
+    public CarbMeasurementsDTO createCarb(CarbMeasurementsDTO carbMeasurementsDto, Long patientId) throws Exception {
         CarbMeasurements carbMeasurements = carbMeasurementsDto.asCarbMeasurements();
+        Optional<Patient> patientOptional = patientRepository.findById(patientId);
+        if (patientOptional.isEmpty() ){
+            throw new Exception("PatientId is not found.");
+        }
+        Patient patient = patientOptional.get();
+        carbMeasurements.setPatient(patient);
         return new CarbMeasurementsDTO(carbRepository.save(carbMeasurements));
     }
 
@@ -192,7 +196,7 @@ public class MediDataVaultImpl implements MediDataVaultService {
     }
 
     @Override
-    public CarbMeasurementsDTO update(CarbMeasurementsDTO carbMeasurementsDTO, long id) throws Exception {
+    public CarbMeasurementsDTO updateCarb(CarbMeasurementsDTO carbMeasurementsDTO, long id) throws Exception {
         Optional<CarbMeasurements> optionalCarbMeasurements = carbRepository.findById(id);
         if (optionalCarbMeasurements.isPresent())
             throw new Exception("CarbMeasurement with id " + id + " not found");

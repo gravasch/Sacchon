@@ -6,7 +6,6 @@ import gr.codehub.sacchon.Dto.PatientDTO;
 import gr.codehub.sacchon.service.MediDataVaultService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -54,10 +53,11 @@ public class PatientController {
     //Glucose
 
     //Stores glucose level
-    @PostMapping("/patient/glucose")
-    public GlucoseLevelDto storeGlucose(@RequestBody GlucoseLevelDto glucoseLevelDto) {
+    @PostMapping("/patient/glucose/{id}")
+    public GlucoseLevelDto storeGlucose(@RequestBody GlucoseLevelDto glucoseLevelDto,
+                                        @PathVariable (name = "patientId") Long patientId) throws Exception{
         log.info("The end point save glucose level has been used");
-        return mediDataVaultService.createGlucose(glucoseLevelDto);
+        return mediDataVaultService.createGlucose(glucoseLevelDto,patientId);
     }
 
 
@@ -85,10 +85,11 @@ public class PatientController {
     //Carb Measurements
 
     // Stores carb measurements
-    @PostMapping("/patient/carbs")
-public CarbMeasurementsDTO storeCarbMeasurement(@RequestBody CarbMeasurementsDTO carbMeasurementsDto) {
+    @PostMapping("/patient/carbs/{id}")
+    public CarbMeasurementsDTO storeCarbMeasurement(@RequestBody CarbMeasurementsDTO carbMeasurementsDTO,
+                                                    @PathVariable (name = "patientId") Long patientId) throws Exception {
         log.info("The endpoint to store carb measurements has been used");
-        return mediDataVaultService.create(carbMeasurementsDto);
+        return mediDataVaultService.createCarb(carbMeasurementsDTO,patientId);
     }
 
     // View carb measurements by patient's id
@@ -104,7 +105,7 @@ public CarbMeasurementsDTO storeCarbMeasurement(@RequestBody CarbMeasurementsDTO
                                                      @PathVariable(name = "id") Long id) throws Exception {
         log.info("The endpoint to update carb measurements by patient id has been used");
         carbMeasurementsDto.setCarbId(id);
-        return mediDataVaultService.update(carbMeasurementsDto, id);
+        return mediDataVaultService.updateCarb(carbMeasurementsDto, id);
     }
 
     // Delete carb measurements by patient's id

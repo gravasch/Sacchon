@@ -4,12 +4,7 @@ package gr.codehub.sacchon.service;
 import gr.codehub.sacchon.Dto.CarbMeasurementsDTO;
 import gr.codehub.sacchon.Dto.GlucoseLevelDto;
 import gr.codehub.sacchon.Dto.PatientDTO;
-import gr.codehub.sacchon.exceptions.MediDataVaultException;
-import gr.codehub.sacchon.model.GlucoseLevel;
-import gr.codehub.sacchon.model.CarbMeasurements;
-import gr.codehub.sacchon.model.Patient;
 
-import java.time.LocalDate;
 import java.util.List;
 
 public interface MediDataVaultService {
@@ -18,6 +13,8 @@ public interface MediDataVaultService {
 
     PatientDTO createPatient(PatientDTO patient);
 
+
+    //Account settings
 
     PatientDTO readPatient(Long id) throws Exception;
 
@@ -30,7 +27,12 @@ public interface MediDataVaultService {
 
     //Glucose Level
 
-    GlucoseLevelDto createGlucose(GlucoseLevelDto glucoseLevel);
+    //
+    //
+    //    //Add measurements
+    //
+    //    //GlucoseLevel
+    GlucoseLevelDto createGlucose(GlucoseLevelDto glucoseLevelDto, Long patientId) throws Exception;
 
     List<GlucoseLevelDto> readAllGlucose();
 
@@ -42,18 +44,14 @@ public interface MediDataVaultService {
 
     //Carb Measurements
 
-    CarbMeasurementsDTO createCarbMeasurement(CarbMeasurementsDTO carbMeasurementsDTO);
 
-    List<CarbMeasurementsDTO> readCarbMeasurements();
-
-
-    CarbMeasurementsDTO create(CarbMeasurementsDTO dto);
+    CarbMeasurementsDTO createCarb(CarbMeasurementsDTO carbMeasurementsDto, Long patientId) throws Exception;
 
     List<CarbMeasurementsDTO> readAllCarbs();
 
     CarbMeasurementsDTO readCarbsDb(long id) throws Exception;
 
-    CarbMeasurementsDTO update(CarbMeasurementsDTO dto, long id) throws Exception;
+    CarbMeasurementsDTO updateCarb(CarbMeasurementsDTO dto, long id) throws Exception;
 
     boolean deleteCarb(long id) throws Exception;
 

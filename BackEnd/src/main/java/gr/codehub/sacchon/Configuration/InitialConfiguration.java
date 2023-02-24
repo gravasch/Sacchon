@@ -27,13 +27,13 @@ public class InitialConfiguration {
 
                 List<Doctor> list =  doctorRepository.saveAll(List.of(doctor1, doctor2));
 
-//                Patient patient1 = new Patient(  1L,  "Malvina", "Zatka", "martiou 25", "thessaloniki" , LocalDate.now(),
-//                        DiabetesType.TYPE1, true ,doctor1, null);
-//
-//                Patient patient2 = new Patient(  2L,  "Evaggelia", "Milosi", "karamanli", "Drama", LocalDate.now(),
-//                        DiabetesType.GESTATIONAL, true ,doctor2, null);
-//
-//                List<Patient> list2 =  patientRepository.saveAll(List.of(patient1, patient2));
+                Patient patient1 = new Patient(  1L,  "Malvina", "Zatka","zatkam", "martiou 25", "thessaloniki" , LocalDate.now(),
+                        DiabetesType.TYPE1, true ,doctor1, null,null,null);
+
+                Patient patient2 = new Patient(  2L,  "Evaggelia", "Milosi","emilosi", "karamanli", "Drama", LocalDate.now(),
+                        DiabetesType.GESTATIONAL, true ,doctor2, null,null,null);
+
+                List<Patient> list2 =  patientRepository.saveAll(List.of(patient1, patient2));
 
 
 
