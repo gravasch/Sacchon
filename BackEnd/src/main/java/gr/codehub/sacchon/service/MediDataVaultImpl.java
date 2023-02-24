@@ -181,22 +181,23 @@ public class MediDataVaultImpl implements MediDataVaultService {
                 .collect(Collectors.toList());
     }
 
-    @Override
-    public CarbMeasurementsDTO readCarbsDb(long id) throws Exception {
+
+    public CarbMeasurements readCarbsDb(Long id) throws Exception {
         Optional<CarbMeasurements> carbMeasurements = carbRepository.findById(id);
         if (carbMeasurements.isPresent())
-            throw new Exception("CarbMeasurement with id " + id + " not found");
-        return new CarbMeasurementsDTO(carbMeasurements.get());
+            return carbMeasurements.get();
+        throw new Exception("CarbMeasurement with id " + id + " not found");
     }
 
     @Override
     public CarbMeasurementsDTO readCarbs(Long id) throws Exception {
-        return new CarbMeasurementsDTO(readCarbsDb(id).asCarbMeasurements());
+        return new CarbMeasurementsDTO(readCarbsDb(id));
 
     }
 
+
     @Override
-    public CarbMeasurementsDTO updateCarb(CarbMeasurementsDTO carbMeasurementsDTO, long id) throws Exception {
+    public CarbMeasurementsDTO updateCarb(CarbMeasurementsDTO carbMeasurementsDTO, Long id) throws Exception {
         Optional<CarbMeasurements> optionalCarbMeasurements = carbRepository.findById(id);
         if (optionalCarbMeasurements.isPresent())
             throw new Exception("CarbMeasurement with id " + id + " not found");

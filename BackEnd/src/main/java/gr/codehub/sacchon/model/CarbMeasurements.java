@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Getter
@@ -20,8 +21,10 @@ public class CarbMeasurements {
     private Long carbId;
 
     private LocalDate date;
-    private double gram;
+    private BigDecimal gram;
+
     @ManyToOne
-    Patient patient;
+    @JoinColumn(name= "patient_id")
+    private Patient patient;
 
 }

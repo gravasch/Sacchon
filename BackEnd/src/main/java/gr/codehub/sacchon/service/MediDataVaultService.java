@@ -49,9 +49,9 @@ public interface MediDataVaultService {
 
     List<CarbMeasurementsDTO> readAllCarbs();
 
-    CarbMeasurementsDTO readCarbsDb(long id) throws Exception;
+    //CarbMeasurementsDTO readCarbsDb(Long id) throws Exception;
 
-    CarbMeasurementsDTO updateCarb(CarbMeasurementsDTO dto, long id) throws Exception;
+    CarbMeasurementsDTO updateCarb(CarbMeasurementsDTO dto, Long id) throws Exception;
 
     boolean deleteCarb(long id) throws Exception;
 

@@ -14,7 +14,7 @@ import java.time.LocalTime;
 @NoArgsConstructor
 public class GlucoseLevelDto {
 
-    private long glucId;
+    private Long glucId;
     private LocalDate glDate;
     private LocalTime glTime;
     private BigDecimal measurement;

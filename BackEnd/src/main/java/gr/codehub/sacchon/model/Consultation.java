@@ -3,6 +3,7 @@ package gr.codehub.sacchon.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -19,7 +20,7 @@ public class Consultation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String medicationName;
-    private double dosage;
+    private BigDecimal dosage;
     private String advice;
     private LocalDate consultationDate;
 

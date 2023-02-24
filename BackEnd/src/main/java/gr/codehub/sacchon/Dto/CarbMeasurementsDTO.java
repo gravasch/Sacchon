@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Data
@@ -13,13 +14,17 @@ import java.time.LocalDate;
 public class CarbMeasurementsDTO {
     private Long carbId;
     private LocalDate date;
-    private double gram;
+    private BigDecimal gram;
 
     public CarbMeasurementsDTO(CarbMeasurements carbMeasurements) {
-        carbId = carbMeasurements.getCarbId();
-        date = carbMeasurements.getDate();
-        gram = carbMeasurements.getGram();
+        if(carbMeasurements!= null) {
+            carbId = carbMeasurements.getCarbId();
+            date = carbMeasurements.getDate();
+            gram = carbMeasurements.getGram();
+        }
     }
+
+
 
     public CarbMeasurements asCarbMeasurements() {
         CarbMeasurements carbMeasurements = new CarbMeasurements();

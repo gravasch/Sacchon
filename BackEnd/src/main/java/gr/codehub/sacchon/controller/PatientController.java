@@ -53,7 +53,7 @@ public class PatientController {
     //Glucose
 
     //Stores glucose level
-    @PostMapping("/patient/glucose/{id}")
+    @PostMapping("/patient/glucose/{patientId}")
     public GlucoseLevelDto storeGlucose(@RequestBody GlucoseLevelDto glucoseLevelDto,
                                         @PathVariable (name = "patientId") Long patientId) throws Exception{
         log.info("The end point save glucose level has been used");
@@ -85,7 +85,7 @@ public class PatientController {
     //Carb Measurements
 
     // Stores carb measurements
-    @PostMapping("/patient/carbs/{id}")
+    @PostMapping("/patient/carbs/{patientId}")
     public CarbMeasurementsDTO storeCarbMeasurement(@RequestBody CarbMeasurementsDTO carbMeasurementsDTO,
                                                     @PathVariable (name = "patientId") Long patientId) throws Exception {
         log.info("The endpoint to store carb measurements has been used");
@@ -93,10 +93,10 @@ public class PatientController {
     }
 
     // View carb measurements by patient's id
-    @GetMapping("/patient/carbs/{id}")
-    public CarbMeasurementsDTO viewCarbMeasurements(@PathVariable(name = "id") Long id) throws Exception {
+    @GetMapping("/patient/carbs/{carbsId}")
+    public CarbMeasurementsDTO viewCarbMeasurements(@PathVariable(name = "carbsId") Long carbsId) throws Exception {
         log.info("The endpoint to view carb measurements by patient id has been used");
-        return mediDataVaultService.readCarbs(id);
+        return mediDataVaultService.readCarbs(carbsId);
     }
 
     // Update carb measurements by patient's id

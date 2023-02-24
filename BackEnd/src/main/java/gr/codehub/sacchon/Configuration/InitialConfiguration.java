@@ -37,13 +37,13 @@ public class InitialConfiguration {
 
 
 
-                Consultation consultation1 = new Consultation( 1L,"xanax", 2.2, "once a day",LocalDate.now() ,doctor1, null);
-                Consultation consultation2 = new Consultation( 2L,"panadol", 1.4, "three every day",LocalDate.now() ,doctor2, null);
+//                Consultation consultation1 = new Consultation( 1L,"xanax", 2.20, "once a day", LocalDate.now() ,doctor1, null);
+//                Consultation consultation2 = new Consultation( 2L,"panadol", "1.40", "three every day",LocalDate.now() ,doctor2, null);
 
-                consultationRepository.saveAll(List.of(consultation1, consultation2));
+                //consultationRepository.saveAll(List.of(consultation1, consultation2));
 
 
-                System.out.println(consultation1);
+               // System.out.println(consultation1);
                 System.out.println(doctor1);
 
             };
