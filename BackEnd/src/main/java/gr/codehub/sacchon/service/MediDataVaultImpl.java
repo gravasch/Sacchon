@@ -1,6 +1,6 @@
 package gr.codehub.sacchon.service;
 import gr.codehub.sacchon.Dto.CarbMeasurementsDTO;
-import gr.codehub.sacchon.Dto.GlucoseLevelDto;
+import gr.codehub.sacchon.Dto.GlucoseLevelDTO;
 import gr.codehub.sacchon.Dto.PatientDTO;
 import gr.codehub.sacchon.model.*;
 import gr.codehub.sacchon.repository.CarbRepository;
@@ -93,7 +93,7 @@ public class MediDataVaultImpl implements MediDataVaultService {
 //
 //    //GlucoseLevel
     @Override
-    public GlucoseLevelDto createGlucose(GlucoseLevelDto glucoseLevelDto, Long patientId) throws Exception {
+    public GlucoseLevelDTO createGlucose(GlucoseLevelDTO glucoseLevelDto, Long patientId) throws Exception {
         GlucoseLevel glucoseLevel = glucoseLevelDto.asGlucoseLevel();
         Optional<Patient> patientOptional = patientRepository.findById(patientId);
         if (patientOptional.isEmpty() ){
@@ -101,21 +101,21 @@ public class MediDataVaultImpl implements MediDataVaultService {
         }
         Patient patient = patientOptional.get();
         glucoseLevel.setPatient(patient);
-        return new GlucoseLevelDto(glucoseRepository.save(glucoseLevel));
+        return new GlucoseLevelDTO(glucoseRepository.save(glucoseLevel));
     }
 
     @Override
-    public List<GlucoseLevelDto> readAllGlucose(){
+    public List<GlucoseLevelDTO> readAllGlucose(){
         return glucoseRepository
                 .findAll()
                 .stream()
-                .map(GlucoseLevelDto::new)
+                .map(GlucoseLevelDTO::new)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public GlucoseLevelDto readGlucose(Long id) throws Exception {
-        return new GlucoseLevelDto( readGlucoseDb(id));
+    public GlucoseLevelDTO readGlucose(Long id) throws Exception {
+        return new GlucoseLevelDTO( readGlucoseDb(id));
 
     }
 
@@ -127,7 +127,7 @@ public class MediDataVaultImpl implements MediDataVaultService {
     }
 
     @Override
-    public boolean updateGlucose(GlucoseLevelDto glucoselevel, Long id) {
+    public boolean updateGlucose(GlucoseLevelDTO glucoselevel, Long id) {
         boolean action;
         try {
             GlucoseLevel dbGlucose = readGlucoseDb(id);
@@ -191,6 +191,16 @@ public class MediDataVaultImpl implements MediDataVaultService {
     public CarbMeasurementsDTO readCarbs(Long id) throws Exception {
         return new CarbMeasurementsDTO(readCarbsDb(id));
 
+    }
+
+    @Override
+    public Double findAvgGlucose(Long patientId) {
+        return glucoseRepository.findAvgGlucose(patientId);
+    }
+
+    @Override
+    public Double findAvgCarb(Long patientId) {
+        return carbRepository.findAvgCarb(patientId);
     }
 
     private CarbMeasurements readCarbMeasurementsDb(Long id) throws Exception {

@@ -1,7 +1,7 @@
 package gr.codehub.sacchon.controller;
 
 import gr.codehub.sacchon.Dto.CarbMeasurementsDTO;
-import gr.codehub.sacchon.Dto.GlucoseLevelDto;
+import gr.codehub.sacchon.Dto.GlucoseLevelDTO;
 import gr.codehub.sacchon.Dto.PatientDTO;
 import gr.codehub.sacchon.service.MediDataVaultService;
 import lombok.AllArgsConstructor;
@@ -54,7 +54,7 @@ public class PatientController {
 
     //Stores glucose level
     @PostMapping("/patient/glucose/{patientId}")
-    public GlucoseLevelDto storeGlucose(@RequestBody GlucoseLevelDto glucoseLevelDto,
+    public GlucoseLevelDTO storeGlucose(@RequestBody GlucoseLevelDTO glucoseLevelDto,
                                         @PathVariable (name = "patientId") Long patientId) throws Exception{
         log.info("The end point save glucose level has been used");
         return mediDataVaultService.createGlucose(glucoseLevelDto,patientId);
@@ -63,14 +63,14 @@ public class PatientController {
 
     //View glucose level by patient's id
     @GetMapping("/patient/glucose/{id}")
-    public GlucoseLevelDto viewGlucose(@PathVariable(name = "id") Long id) throws Exception {
+    public GlucoseLevelDTO viewGlucose(@PathVariable(name = "id") Long id) throws Exception {
         log.info("The end point GlucoseLevelDto - view by id has been used");
         return mediDataVaultService.readGlucose(id);
     }
 
     //Save glucose level by patient's id
     @PutMapping("/patient/glucose/{id}")
-    public boolean updateGlucose(@RequestBody GlucoseLevelDto glucoseLevelDto,
+    public boolean updateGlucose(@RequestBody GlucoseLevelDTO glucoseLevelDto,
                                  @PathVariable(name = "id") Long id) {
         log.info("The end point PatientDto - save glucose by patient id has been used");
         return mediDataVaultService.updateGlucose(glucoseLevelDto, id);
@@ -112,6 +112,16 @@ public class PatientController {
     public boolean deleteCarbMeasurement(@PathVariable(name = "id") Long id)  {
         log.info("The endpoint to delete carb measurements by patient id has been used");
        return mediDataVaultService.deleteCarb(id);
+    }
+
+    @GetMapping("/patient/glucoseavg/{patientId}")
+    public Double findAvgGlucose(@PathVariable(name = "patientId") Long patientId){
+        return mediDataVaultService.findAvgGlucose(patientId);
+    }
+
+    @GetMapping("/patient/carbavg/{patientId}")
+    public Double findAvgCarb(@PathVariable(name = "patientId") Long patientId){
+        return mediDataVaultService.findAvgCarb(patientId);
     }
 
 

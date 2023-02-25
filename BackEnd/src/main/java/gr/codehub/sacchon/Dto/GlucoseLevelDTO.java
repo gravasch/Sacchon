@@ -12,14 +12,14 @@ import java.time.LocalTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class GlucoseLevelDto {
+public class GlucoseLevelDTO {
 
     private Long glucId;
     private LocalDate glDate;
     private LocalTime glTime;
     private BigDecimal measurement;
 
-    public GlucoseLevelDto(GlucoseLevel glucoseLevel){
+    public GlucoseLevelDTO(GlucoseLevel glucoseLevel){
         if (glucoseLevel!= null){
             glucId = glucoseLevel.getGlucId();
             glDate = glucoseLevel.getGlDate();

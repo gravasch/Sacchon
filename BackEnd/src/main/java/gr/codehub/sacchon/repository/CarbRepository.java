@@ -14,7 +14,8 @@ import java.time.LocalDateTime;
 @Repository
 public interface CarbRepository extends JpaRepository<CarbMeasurements, Long> {
 
-
+    @Query(value = "SELECT avg(gram) FROM carb_measurements WHERE patient_id = :patientId",nativeQuery = true)
+    Double findAvgCarb(@Param("patientId") Long patientId);
 
 //
 //    @Query(value = "SELECT AVG(gram) FROM carb_measurements WHERE patient_id = :patientId AND measurement_datetime >= :startDate AND measurement_datetime <= :endDate", nativeQuery = true)
