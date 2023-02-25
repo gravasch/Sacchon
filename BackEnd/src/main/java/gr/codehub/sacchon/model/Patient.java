@@ -1,12 +1,10 @@
 package gr.codehub.sacchon.model;
 
-import gr.codehub.sacchon.service.MediDataVaultService;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 
@@ -21,14 +19,14 @@ public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String firstName;
-    private String lastName;
+    private String firstname;
+    private String lastname;
     private String username;
     private String address;
     private String city;
-    private LocalDate birthDate;
-    private DiabetesType diabetesType;
-    private Boolean isActive;
+    private LocalDate birthdate;
+    private DiabetesType diabetestype;
+    private Boolean isactive;
 
     @ManyToOne
     @JoinColumn(name= "doctor_id")
@@ -36,9 +34,9 @@ public class Patient {
 
     @OneToMany(mappedBy = "patient", fetch = FetchType.LAZY)
     private List<Consultation> consultations = new ArrayList<>();
-    @OneToMany(mappedBy = "patient")
+    @OneToMany(mappedBy = "patient",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private List<GlucoseLevel> glucoseLevels = new ArrayList<>();
-    @OneToMany(mappedBy = "patient")
+    @OneToMany(mappedBy = "patient",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private List<CarbMeasurements> carbMeasurements = new ArrayList<>();
 
 
@@ -75,15 +73,4 @@ public class Patient {
 
 
 
-//    public boolean isActive() {
-//        return isActive;
-//    }
-//
-//    public void setActive(boolean active) {
-//        isActive = active;
-//    }
-//
-//
-//    public boolean getActive() { return isActive;
-//    }
 }

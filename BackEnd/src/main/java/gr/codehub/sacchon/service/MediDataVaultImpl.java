@@ -60,13 +60,13 @@ public class MediDataVaultImpl implements MediDataVaultService {
         boolean action ;
         try {
             Patient dbPatient = readPatientDb(id);
-            dbPatient.setFirstName(patient.getFirstName());
-            dbPatient.setLastName(patient.getLastName());
+            dbPatient.setFirstname(patient.getFirstname());
+            dbPatient.setLastname(patient.getLastname());
             dbPatient.setUsername(patient.getUsername());
-            dbPatient.setIsActive(patient.getIsActive());
+            dbPatient.setIsactive(patient.getIsactive());
             dbPatient.setAddress(patient.getAddress());
             dbPatient.setCity(patient.getCity());
-            dbPatient.setDiabetesType(patient.getDiabetesType());
+            dbPatient.setDiabetestype(patient.getDiabetestype());
             patientRepository.save(dbPatient);
             action = true;
         } catch (Exception e) {

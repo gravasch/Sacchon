@@ -36,14 +36,14 @@ public class InitialConfiguration {
                 List<Patient> list2 =  patientRepository.saveAll(List.of(patient1, patient2));
 
 
-
-//                Consultation consultation1 = new Consultation( 1L,"xanax", 2.20, "once a day", LocalDate.now() ,doctor1, null);
-//                Consultation consultation2 = new Consultation( 2L,"panadol", "1.40", "three every day",LocalDate.now() ,doctor2, null);
-
-                //consultationRepository.saveAll(List.of(consultation1, consultation2));
-
-
-               // System.out.println(consultation1);
+//
+//                Consultation consultation1 = new Consultation( 1L,"xanax",null, "once a day", LocalDate.now() ,doctor1, null);
+//                Consultation consultation2 = new Consultation( 2L,"panadol", "02222", "three every day",LocalDate.now() ,doctor2, null);
+//
+//                consultationRepository.saveAll(List.of(consultation1, consultation2));
+//
+//
+//                System.out.println(consultation1);
                 System.out.println(doctor1);
 
             };
