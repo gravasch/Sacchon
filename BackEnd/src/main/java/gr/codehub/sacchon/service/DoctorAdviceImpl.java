@@ -3,6 +3,7 @@ package gr.codehub.sacchon.service;
 import gr.codehub.sacchon.Dto.ConsultationDTO;
 import gr.codehub.sacchon.Dto.DoctorDTO;
 import gr.codehub.sacchon.Dto.PatientDTO;
+import gr.codehub.sacchon.exceptions.DoctorAdviceException;
 import gr.codehub.sacchon.model.Consultation;
 import gr.codehub.sacchon.model.Doctor;
 import gr.codehub.sacchon.model.Patient;
@@ -36,13 +37,13 @@ public class DoctorAdviceImpl implements DoctorAdviceService {
     }
 
     @Override
-    public ConsultationDTO createConsultation(ConsultationDTO consultationDTO, Long doctorId, Long patientId) throws Exception {
+    public ConsultationDTO createConsultation(ConsultationDTO consultationDTO, Long doctorId, Long patientId) throws DoctorAdviceException {
 
         Consultation consultation = consultationDTO.asConsultation();
         Optional<Patient> patientOpt = patientRepository.findById(patientId);
         Optional<Doctor> doctorOpt = doctorRepository.findById(doctorId);
         if (patientOpt.isEmpty() || doctorOpt.isEmpty()){
-            throw new Exception("Patient or doctor not found");
+            throw new DoctorAdviceException("Patient or doctor not found");
         }
         Patient patient = patientOpt.get();
         consultation.setPatient(patient);
@@ -55,7 +56,7 @@ public class DoctorAdviceImpl implements DoctorAdviceService {
 //ORDER BY ConsultationDate DESC
 
     @Override
-    public List<ConsultationDTO> readAllPatientConsultation(Long patientId) throws Exception{
+    public List<ConsultationDTO> readAllPatientConsultation(Long patientId) throws DoctorAdviceException{
 
 
         return consultationRepository
@@ -76,27 +77,27 @@ public class DoctorAdviceImpl implements DoctorAdviceService {
 
 
     @Override
-    public DoctorDTO readDoctor(Long id) throws Exception {
+    public DoctorDTO readDoctor(Long id) throws DoctorAdviceException {
         return new DoctorDTO( readDoctorDb(id));
     }
 
     @Override
-    public ConsultationDTO readConsultation(Long id) throws Exception {
+    public ConsultationDTO readConsultation(Long id) throws DoctorAdviceException {
         return new ConsultationDTO( readConsultationDb(id));
     }
 
-    private Doctor readDoctorDb(Long id) throws Exception {
+    private Doctor readDoctorDb(Long id) throws DoctorAdviceException {
         Optional<Doctor> doctorOptional = doctorRepository.findById(id);
         if (doctorOptional.isPresent())
             return   doctorOptional.get() ;
-        throw new Exception("Doctor not found id= " + id);
+        throw new DoctorAdviceException("Doctor not found id= " + id);
     }
 
-    private Consultation readConsultationDb(Long id) throws Exception {
+    private Consultation readConsultationDb(Long id) throws DoctorAdviceException {
         Optional<Consultation> consultationOptional = consultationRepository.findById(id);
         if (consultationOptional.isPresent())
             return   consultationOptional.get() ;
-        throw new Exception("Consultation not found id= " + id);
+        throw new DoctorAdviceException("Consultation not found id= " + id);
     }
 
     @Override
@@ -112,7 +113,7 @@ public class DoctorAdviceImpl implements DoctorAdviceService {
             dbDoctor.setIsActive(doctor.getIsActive());
             doctorRepository.save(dbDoctor);
             action = true;
-        } catch (Exception e) {
+        } catch (DoctorAdviceException e) {
             action = false;
         }
         return action;
@@ -129,7 +130,7 @@ public class DoctorAdviceImpl implements DoctorAdviceService {
             dbConsult.setConsultationDate(consult.getConsultationDate());
             consultationRepository.save(dbConsult);
             action = true;
-        } catch (Exception e) {
+        } catch (DoctorAdviceException e) {
             action = false;
         }
         return action;
@@ -142,7 +143,7 @@ public class DoctorAdviceImpl implements DoctorAdviceService {
             Doctor dbDoctor = readDoctorDb(id);
             doctorRepository.delete(dbDoctor);
             action = true;
-        } catch (Exception e) {
+        } catch (DoctorAdviceException e) {
             action = false;
         }
         return action;
@@ -155,7 +156,7 @@ public class DoctorAdviceImpl implements DoctorAdviceService {
             Consultation dbConsultation = readConsultationDb(id);
             consultationRepository.delete(dbConsultation);
             action = true;
-        } catch (Exception e) {
+        } catch (DoctorAdviceException e) {
             action = false;
         }
         return action;

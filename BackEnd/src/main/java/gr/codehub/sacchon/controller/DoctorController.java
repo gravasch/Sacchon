@@ -2,6 +2,7 @@ package gr.codehub.sacchon.controller;
 
 import gr.codehub.sacchon.Dto.ConsultationDTO;
 import gr.codehub.sacchon.Dto.DoctorDTO;
+import gr.codehub.sacchon.exceptions.DoctorAdviceException;
 import gr.codehub.sacchon.model.Patient;
 import gr.codehub.sacchon.service.DoctorAdviceService;
 import lombok.AllArgsConstructor;
@@ -20,7 +21,7 @@ public class DoctorController {
 
 
     @GetMapping("/doctor/{id}")
-    public DoctorDTO findDoctor(@PathVariable(name = "id") Long id) throws Exception {
+    public DoctorDTO findDoctor(@PathVariable(name = "id") Long id) throws DoctorAdviceException {
         log.info("The end point DoctorDto has been used");
         return doctorService.readDoctor(id);
     }
@@ -46,19 +47,19 @@ public class DoctorController {
 
     public ConsultationDTO createConsultation(@RequestBody ConsultationDTO consultationDTO,
                                               @PathVariable (name = "doctorId") Long doctorId,
-                                              @PathVariable (name = "patientId") Long patientId) throws Exception{
+                                              @PathVariable (name = "patientId") Long patientId) throws DoctorAdviceException{
         log.info("The end point consultation has been used");
         return doctorService.createConsultation(consultationDTO,doctorId,patientId);
     }
 
     @GetMapping("/doctor/consult/{patientId}")
-    public List<ConsultationDTO>findAllPatientConsultation(@PathVariable(name = "patientId") Long patientId) throws Exception {
+    public List<ConsultationDTO>findAllPatientConsultation(@PathVariable(name = "patientId") Long patientId) throws DoctorAdviceException {
         log.info("The end point ConsultationDto has been used");
         return doctorService.readAllPatientConsultation(patientId);
     }
 
     @GetMapping("/doctor/consultation/{patientId}")
-    public List<ConsultationDTO>findPatientConsultation(@PathVariable(name = "patientId") Long patientId) throws Exception {
+    public List<ConsultationDTO>findPatientConsultation(@PathVariable(name = "patientId") Long patientId) throws DoctorAdviceException {
         log.info("The end point ConsultationDto has been used");
         return doctorService.findPatientConsultation(patientId);
     }

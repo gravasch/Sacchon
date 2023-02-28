@@ -3,6 +3,7 @@ package gr.codehub.sacchon.controller;
 import gr.codehub.sacchon.Dto.CarbMeasurementsDTO;
 import gr.codehub.sacchon.Dto.GlucoseLevelDTO;
 import gr.codehub.sacchon.Dto.PatientDTO;
+import gr.codehub.sacchon.exceptions.MediDataVaultException;
 import gr.codehub.sacchon.service.MediDataVaultService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,7 +27,7 @@ public class PatientController {
 
     //View Patient Account by ID
     @GetMapping("/patient/{id}")
-    public PatientDTO getPatient(@PathVariable(name = "id") Long id) throws Exception {
+    public PatientDTO getPatient(@PathVariable(name = "id") Long id) throws MediDataVaultException {
         log.info("The end point patient by id has been used");
         return mediDataVaultService.readPatient(id);
     }
@@ -55,7 +56,7 @@ public class PatientController {
     //Stores glucose level
     @PostMapping("/patient/glucose/{patientId}")
     public GlucoseLevelDTO storeGlucose(@RequestBody GlucoseLevelDTO glucoseLevelDto,
-                                        @PathVariable (name = "patientId") Long patientId) throws Exception{
+                                        @PathVariable (name = "patientId") Long patientId) throws MediDataVaultException{
         log.info("The end point save glucose level has been used");
         return mediDataVaultService.createGlucose(glucoseLevelDto,patientId);
     }
@@ -63,7 +64,7 @@ public class PatientController {
 
     //View glucose level by patient's id
     @GetMapping("/patient/glucose/{id}")
-    public GlucoseLevelDTO viewGlucose(@PathVariable(name = "id") Long id) throws Exception {
+    public GlucoseLevelDTO viewGlucose(@PathVariable(name = "id") Long id) throws MediDataVaultException {
         log.info("The end point GlucoseLevelDto - view by id has been used");
         return mediDataVaultService.readGlucose(id);
     }
@@ -87,14 +88,14 @@ public class PatientController {
     // Stores carb measurements
     @PostMapping("/patient/carbs/{patientId}")
     public CarbMeasurementsDTO storeCarbMeasurement(@RequestBody CarbMeasurementsDTO carbMeasurementsDTO,
-                                                    @PathVariable (name = "patientId") Long patientId) throws Exception {
+                                                    @PathVariable (name = "patientId") Long patientId) throws MediDataVaultException {
         log.info("The endpoint to store carb measurements has been used");
         return mediDataVaultService.createCarb(carbMeasurementsDTO,patientId);
     }
 
     // View carb measurements by patient's id
     @GetMapping("/patient/carbs/{carbsId}")
-    public CarbMeasurementsDTO viewCarbMeasurements(@PathVariable(name = "carbsId") Long carbsId) throws Exception {
+    public CarbMeasurementsDTO viewCarbMeasurements(@PathVariable(name = "carbsId") Long carbsId) throws MediDataVaultException {
         log.info("The endpoint to view carb measurements by patient id has been used");
         return mediDataVaultService.readCarbs(carbsId);
     }
