@@ -39,7 +39,7 @@ public class InitialConfiguration {
 
 
                 Consultation consultation1 = new Consultation( 1L,"xanax",null, "once a day", LocalDate.now() ,doctor1, null);
-                Consultation consultation2 = new Consultation( 2L,"panadol",  new BigDecimal("2.05"), "three every day",LocalDate.now() ,doctor2, null);
+                Consultation consultation2 = new Consultation( 2L,"zoloft",  new BigDecimal("2.05"), "three every day",LocalDate.now() ,doctor2, null);
 
                 consultationRepository.saveAll(List.of(consultation1, consultation2));
 
