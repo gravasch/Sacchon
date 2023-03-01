@@ -85,12 +85,11 @@ Installation guide
 For the backend
 
     JetBrains IntelliJ IDEA
-    Microsoft SQL Server 2019
-    Java 8 (or greater)
+    Microsoft SQL Server 2022
+    Java 17 (or greater)
     Lombok depedency
     Maven (To manage depedencies and the software development lifecycle)
     Hibernate
-    Restlet Framework
 
 For the FrontEnd
 
@@ -99,7 +98,6 @@ For the FrontEnd
     Bootstrap framework
     Visual Studio Code
     Open source images
-    Chart JS
 
 For testing REST calls
 
@@ -115,9 +113,9 @@ Guide to run the project
     Copy this link Sacchon app
 
     Clone the project in to your system
-    $ git clone https://github.com/codehub-learn/pfizer-se-team1.git 
+    $ git clone https://github.com/gravasch/Sacchon
 
-    Create a new database named Sacchon
+    Create a new database named team2sacchon
 
     Open the backend folder with (Intellij)
 
