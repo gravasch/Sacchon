@@ -208,7 +208,7 @@ public class MediDataVaultImpl implements MediDataVaultService {
         Optional<CarbMeasurements> carbMeasurementsOptional = carbRepository.findById(id);
         if (carbMeasurementsOptional.isPresent())
             return   carbMeasurementsOptional.get() ;
-        throw new MediDataVaultException("Consultation not found id= " + id);
+        throw new MediDataVaultException("CarbMeasurements not found id= " + id);
     }
 
 
