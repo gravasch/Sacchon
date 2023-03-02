@@ -1,27 +1,40 @@
-import { FileNotFoundComponent } from './file-not-found/file-not-found.component';
-import { CreateComponent } from './create/create.component';
+import { CreatePatientComponent } from './create-patient/create-patient.component';
 import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { UserComponent } from './user/user.component';
-import { UserListComponent } from './user-list/user-list.component';
+import { PatientControlPanelComponent } from './patient-control-panel/patient-control-panel.component';
+import { DoctorComponent } from './doctor/doctor.component';
+import { PatientChoicesComponent } from './patients_choices/patients_choices.component';
+import { CreateDoctorComponent } from './create-doctor/create-doctor.component';
+import { ViewPatientComponent } from './view-patient/view-patient.component';
+import { DoctorsChoicesComponent } from './doctors-choices/doctors-choices.component';
+import { AdminChoicesComponent } from './admin-choices/admin-choices.component';
+import { PatientsListComponent } from './patients-list/patients-list.component';
+import { UpdatePatientComponent } from './update-patient-info/update-patient-info.component';
+import { SearchbuttonComponent } from './searchbutton/searchbutton.component';
+import { MeasurementsComponent } from './view-measurements/view-measurements.component';
 
 const routes: Routes = [
   { path: 'home' , component: HomeComponent },
+  { path: 'patient' , component: PatientControlPanelComponent },
+  { path: 'doctor' , component: DoctorsChoicesComponent},
+  { path: 'createPatient', component: CreatePatientComponent},
+  { path: 'createDoctor', component: CreateDoctorComponent},
+  { path: 'patients_choices' , component: PatientChoicesComponent},
+  { path: 'view_patient', component: ViewPatientComponent},
+  { path: 'doctors-choices' , component: DoctorsChoicesComponent},
+  { path: 'admin-choices' , component: AdminChoicesComponent},
+  { path: 'patient-control-panel' , component: PatientControlPanelComponent},
+  { path: 'patients-list' , component: PatientsListComponent},
   { path: '' , component: HomeComponent },
-  { path: 'create' , component: CreateComponent},
-  { path: 'patient' , component: UserListComponent },
-  { path: 'doctor' , component: CreateComponent},
-  { path: '**' , component: FileNotFoundComponent},
-  { path: 'user' , component: UserComponent},
-  { path: 'user-list' , component: UserListComponent}
-  
+  { path: 'update-patient-info' , component: UpdatePatientComponent},
+  { path: 'searchbutton' , component: SearchbuttonComponent},
+  { path: 'view-measurements' , component: MeasurementsComponent},
+  // { path: '**' , component: PatientControlPanelComponent}
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
-
-
+export class AppRoutingModule { };

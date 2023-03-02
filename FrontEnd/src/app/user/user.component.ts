@@ -13,7 +13,7 @@ export class UserComponent {
 
   ngOnIt(): void {
 
-    
+
   }
 
 }

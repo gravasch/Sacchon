@@ -1,19 +1,17 @@
-import { UserService } from './../services/user.service';
+import { UserService } from '../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-create',
-  templateUrl: './create.component.html',
-  styleUrls: ['./create.component.scss']
+  templateUrl: './create-patient.component.html',
+  styleUrls: ['./create-patient.component.scss']
 })
 
-export class CreateComponent implements OnInit {
+export class CreatePatientComponent implements OnInit {
   response: any;
   createForm!: FormGroup;
-
-
 
   ngOnInit(): void {
     this.createForm = this.fb.group({
@@ -23,8 +21,11 @@ export class CreateComponent implements OnInit {
       address: [''],
       city: [''],
       birthdate: [''],
-      diabetestype: ['']
+      typediabetes: [''],
+      isactive: ['']
     });
+
+
   }
 
   constructor(
@@ -44,7 +45,9 @@ export class CreateComponent implements OnInit {
       birthdate: this.birthdate?.value,
       diabetestype: this.diabetestype?.value
     };
-    this.http.post('http://localhost:9000/patient', data).subscribe({
+
+    console.log(data.diabetestype)
+    this.service.post(data).subscribe({
       next: res => {
         this.response = res;
         this.createForm.reset();
@@ -59,6 +62,12 @@ export class CreateComponent implements OnInit {
     this.createForm.reset();
     this.createForm.markAsPristine();
     this.createForm.markAsUntouched();
+  }
+
+  setDefaultValues(){
+    this.createForm.value.diabetestype="0";
+    this.createForm.value.isactive=true;
+
   }
 
   get username() {
